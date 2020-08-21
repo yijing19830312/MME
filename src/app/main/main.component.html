@@ -1,0 +1,68 @@
+<main>
+<div style="float: left; width:50%;">
+ 
+  <form [formGroup]="inquiryForm" (ngSubmit)="onSubmit()" novalidate>
+   
+    <p>
+      <label for="partNumber">Part-number </label>
+      <input type="text" id="partNumber" name="partNumber" formControlName="partNumber">
+    </p>
+   
+    <div
+      *ngIf="!partNumber?.valid && (partNumber?.dirty ||partNumber?.touched)">
+      <div [hidden]="!partNumber.errors.required">
+        Part-number is required
+      </div>
+      <div [hidden]="!partNumber.errors.maxlength">
+        Max length allowed is {{partNumber.errors.maxlength?.requiredLength}}
+      </div>
+    </div>
+   
+    <p>
+      <label for="quantity">Quantity </label>
+      <input type="text" id="lastname" name="quantity" formControlName="quantity">
+    </p>
+   
+    <div *ngIf="!quantity.valid && (quantity.dirty ||quantity.touched)">
+      <div [hidden]="!quantity.errors.pattern">
+        Only numbers are allowed
+      </div>
+      <div [hidden]="!quantity.errors.maxlength">
+        Max length allowed is {{quantity.errors.maxlength?.requiredLength}} 
+      </div>
+      <div [hidden]="!quantity.errors.required">
+        Quantity is required
+      </div>
+    </div>
+
+    <p>
+      <label for="vor">VOR </label>
+      <input type="radio" value="Y" name="vor" formControlName="vor" > Y
+      <input type="radio" value="N" name="vor" formControlName="vor" > N
+    </p>
+  
+    <p>
+      <button type="submit" [disabled]="!inquiryForm.valid">Submit</button>
+    </p>
+   
+  </form>
+   
+  </div>
+   
+  <div style="float: right; width:50%;">
+   
+    <h3>inquiryForm Status</h3>
+    <b>valid : </b>{{inquiryForm.valid}}
+    <b>invalid : </b>{{inquiryForm.invalid}}
+    <b>touched : </b>{{inquiryForm.touched}}
+    <b>untouched : </b>{{inquiryForm.untouched}}
+    <b>pristine : </b>{{inquiryForm.pristine}}
+    <b>dirty : </b>{{inquiryForm.dirty}}
+    <b>disabled : </b>{{inquiryForm.disabled}}
+    <b>enabled : </b>{{inquiryForm.enabled}}
+   
+    <h3>inquiryForm Value</h3>
+    {{inquiryForm.value |json}}
+   
+  </div>
+</main>

@@ -1,0 +1,193 @@
+.top-part-header .headerTitle{
+	font-size: 33px;
+	font-weight: 400;
+	float: left;
+	color: #5f5f5f;
+	margin-top: 34px;
+	margin-left: 23px;
+}
+
+#side-menu {
+	width: 320px;
+	right: -320px;
+}
+
+.showtools nav.top-nav {
+	padding-top: 153px;
+}
+
+.expand-button {
+	float: right;
+}
+
+.dashboard .place-holder a span, .dashboard .place-holder .app-label {
+	font-size: 15px;
+	background-position: 97% 150px;
+}
+
+.dashboard .place-holder:hover span.tooltip {
+	width: 185px;
+}
+
+.dashboard .place-holder.wide span.tooltip {
+	width:286px;
+}
+
+.people-finder-result > section > .wpthemeControlBody {
+	padding:20px;
+}
+	.people-finder-result > section > .wpthemeControlBody td {
+		vertical-align:top;
+	}
+	.people-finder-result > section > .wpthemeControlBody select {
+		width:190px;
+		margin:0 0 10px 0;
+	}
+	.people-finder-result > section > .wpthemeControlBody label {
+		display:inline-block;
+		padding:0 0 10px 0;
+
+	}
+
+	.people-finder-result > section > .wpthemeControlBody input {
+		display:block;
+		width:260px;
+		height:24px;
+		padding:0 10px 0 10px;
+		margin:0 10px 0 0;
+		border:1px #d4d4d4 solid;
+		background:#f1f1f1;
+	}
+	.people-finder-result > section > .wpthemeControlBody input[type="button"]  {
+		display:inline-block;
+		width:auto;
+		height:26px;
+		line-height:26px;
+		color:#fff;
+		padding:0 17px;
+		margin:0;
+		border:none;
+		box-shadow: 1px 1px 1px #cdcdcd;
+		background:#9f0001;
+		background:-moz-linear-gradient(top,  #ed1c24 0%, #9f0001 100%);
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed1c24), color-stop(100%,#9f0001));
+		background:-webkit-linear-gradient(top,  #ed1c24 0%,#9f0001 100%);
+		background:-o-linear-gradient(top,  #ed1c24 0%,#9f0001 100%);
+		background:-ms-linear-gradient(top,  #ed1c24 0%,#9f0001 100%);
+		background:linear-gradient(to bottom,  #ed1c24 0%,#9f0001 100%);
+	}
+		.people-finder-result > section > .wpthemeControlBody input[type="button"]:hover {
+			background:#c20d11;
+			background:-moz-linear-gradient(top,  #d21218 0%, #9f0001 100%);
+			background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#d21218), color-stop(100%,#9f0001));
+			background:-webkit-linear-gradient(top,  #d21218 0%,#9f0001 100%);
+			background:-o-linear-gradient(top,  #d21218 0%,#9f0001 100%);
+			background:-ms-linear-gradient(top,  #d21218 0%,#9f0001 100%);
+			background:linear-gradient(to bottom,  #d21218 0%,#9f0001 100%);
+		}
+
+	.people-finder-result > section > .wpthemeControlBody .wpsTaskIconTextBackground a,
+	.people-finder-result > section > .wpthemeControlBody form>table a {
+		display:inline-block;
+		height:26px;
+		line-height:26px;
+		color:#fff;
+		padding:0 17px;
+		margin:15px 0 0 0;
+		box-shadow: 1px 1px 1px #cdcdcd;
+		background:#9f0001;
+		background:-moz-linear-gradient(top,  #ed1c24 0%, #9f0001 100%);
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed1c24), color-stop(100%,#9f0001));
+		background:-webkit-linear-gradient(top,  #ed1c24 0%,#9f0001 100%);
+		background:-o-linear-gradient(top,  #ed1c24 0%,#9f0001 100%);
+		background:-ms-linear-gradient(top,  #ed1c24 0%,#9f0001 100%);
+		background:linear-gradient(to bottom,  #ed1c24 0%,#9f0001 100%);
+	}
+		.people-finder-result > section > .wpthemeControlBody .wpsTaskIconTextBackground a:hover,
+		.people-finder-result > section > .wpthemeControlBody form>table a:hover {
+			background:#c20d11;
+			background:-moz-linear-gradient(top,  #d21218 0%, #9f0001 100%);
+			background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#d21218), color-stop(100%,#9f0001));
+			background:-webkit-linear-gradient(top,  #d21218 0%,#9f0001 100%);
+			background:-o-linear-gradient(top,  #d21218 0%,#9f0001 100%);
+			background:-ms-linear-gradient(top,  #d21218 0%,#9f0001 100%);
+			background:linear-gradient(to bottom,  #d21218 0%,#9f0001 100%);
+		}
+
+	.people-finder-result > section > .wpthemeControlBody table .wpsTableHead td {
+		font-weight:bold;
+		color:#000;
+		padding:30px 0 5px 10px;
+		border-bottom:1px #c2c2c2 solid;
+	}
+
+	.people-finder-result > section > .wpthemeControlBody table .wpsTableRow td {
+		color:#868686;
+		padding:10px 0 0 10px;
+		border-bottom:1px #c2c2c2 solid;
+	}
+	.people-finder-result > section > .wpthemeControlBody .wpsTable table td {
+		color:#868686;
+		padding:10px 0 0 10px;
+		border-bottom:1px #c2c2c2 solid;
+	}
+
+	.people-finder-result > section > .wpthemeControlBody table .wpsTableRow td a,
+	.people-finder-result > section > .wpthemeControlBody .wpsTable table td a {
+		color:#ed1c24;
+	}
+
+/* inherit */
+.people-finder-result > section > .wpthemeControlBody .wpsTable {
+	border:none;
+}
+.people-finder-result > section > .wpthemeControlBody .wpsTableRow td, .people-finder-result > section > .wpthemeControlBody .wpsTableNrmRow td, .wpsTableShdRow td {
+	border:none;
+	padding:0;
+}
+.people-finder-result > section > .wpthemeControlBody .hasHover {
+	border-bottom:1px #ed1c24 dotted;
+}
+
+.people-finder-result form > table > tbody > tr > td:first-child > input[type="button"]#searchButton {
+    float: left;
+    margin-top: 15px;
+}
+
+.people-finder-result > section > .wpthemeControlBody input[type="button"]#resetButton,
+.people-finder-result > section > .wpthemeControlBody input[type="button"]#cancelButton {
+    margin-top: 15px;
+}
+
+.people-finder-result > section > .wpthemeControlBody form > table a {
+    color: #fff !important;
+    font-family: 'Arial,sans-serif' !important;
+    font-size: 12px !important;
+}
+
+
+/* ================================================
+	QUICK FORM
+===================================================*/
+.quickform.form-container label {
+	width: 60%;
+	margin-bottom: 4px;
+}
+
+.form-container input[type="text"], .form-container textarea {
+	width: 99% !important;
+}
+
+.form-container input.radio {	
+	clear: both;
+	margin: 10px 0px 0px 10px;
+}
+
+.form-container span.sub-label {
+	margin-top: 7px;
+	width: 100px !important;
+}
+
+.form-container > div:first-child > label:first-child + .sub-label {
+	margin-left: -15px;
+}

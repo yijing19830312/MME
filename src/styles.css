@@ -33,38 +33,38 @@ form, input {
   }
 
 app-header {
-    color: white;
+    color: black;
     font-size: 14px;
     grid-area: header;
     text-align: center;
-    background-color: #FA7D44;
+    background-color: white;
   }
   
-  app-nav {
+  app-nav { 
     grid-area: nav;
     margin-left: 0.6rem;
-    background-color: #2A92BF;
+    background-color: white;
   }
   
   app-privacy-policy,
   app-main {
     grid-area: content;
-    background-color: #F4CE46;
+    background-color: white;
     padding: 25px;
   }
   
   app-aside {
     grid-area: side;
     margin-right: 0.6rem;
-    background-color: #2A92BF;
+    background-color: #a9acad;
   }
   
   app-footer {
     grid-area: footer;
-    background-color:#2BB961;
-    color: white;
+    background-color: white;
+    color: black;
     text-align: center;
-    padding: 25px 0;
+    padding: 12px 0;
   }
 
   ol {
@@ -72,11 +72,11 @@ app-header {
   }
 
   ol li {
-    color: white;
+    color:black;
   }
   
   ol li a {
-    color: white;
+    color: black;
     text-decoration: none;
     display: inline-block;
     margin-bottom: 15px;

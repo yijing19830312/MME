@@ -42,12 +42,20 @@
     </p>
   
     <p>
-      <button type="submit" [disabled]="!inquiryForm.valid">Submit</button>
+      <button (click)="ngSubmit()" [disabled]="!inquiryForm.valid">Search</button>
     </p>
-   
+    
   </form>
    
   </div>
+
+  <ul class="search-result">
+    <li *ngFor="let item of searchResult" >
+      <a>
+        {{searchResult.partName}}
+      </a>
+    </li>
+  </ul>
    
   <div style="float: right; width:50%;">
    
@@ -66,3 +74,4 @@
    
   </div>
 </main>
+

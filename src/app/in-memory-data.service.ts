@@ -7,6 +7,7 @@ import { StockRequest } from './stockRequest'
   providedIn: 'root'
 })
 export class InMemoryDataService {
+  
 
   createDb() {
     const response = [

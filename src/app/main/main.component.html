@@ -1,11 +1,11 @@
 <main>
 <div style="float: left; width:50%;">
  
-  <form [formGroup]="inquiryForm" (ngSubmit)="onSubmit()" novalidate>
+  <form [formGroup]="inquiryForm" novalidate>
    
     <p>
       <label for="partNumber">Part-number </label>
-      <input type="text" id="partNumber" name="partNumber" formControlName="partNumber">
+      <input [(ngModel)]="data.partNumber" type="text" id="partNumber" name="partNumber" formControlName="partNumber">
     </p>
    
     <div
@@ -20,7 +20,7 @@
    
     <p>
       <label for="quantity">Quantity </label>
-      <input type="text" id="lastname" name="quantity" formControlName="quantity">
+      <input [(ngModel)]="data.quantity"  type="text" id="lastname" name="quantity" formControlName="quantity">
     </p>
    
     <div *ngIf="!quantity.valid && (quantity.dirty ||quantity.touched)">
@@ -37,12 +37,15 @@
 
     <p>
       <label for="vor">VOR </label>
-      <input type="radio" value="Y" name="vor" formControlName="vor" > Y
-      <input type="radio" value="N" name="vor" formControlName="vor" > N
+      <input [(ngModel)]="data.vor" type="radio" value="Y" name="vor" formControlName="vor" > Y
+      <input [(ngModel)]="data.vor" type="radio" value="N" name="vor" formControlName="vor" > N
     </p>
   
     <p>
-      <button (click)="ngSubmit()" [disabled]="!inquiryForm.valid">Search</button>
+      <button type="button" 
+              (click)="doSearch()" 
+              [disabled]="!inquiryForm.valid">Search
+      </button>
     </p>
     
   </form>
@@ -50,9 +53,9 @@
   </div>
 
   <ul class="search-result">
-    <li *ngFor="let item of searchResult" >
+    <li *ngFor="let item of results" >
       <a>
-        {{searchResult.partName}}
+        {{item.partName}}
       </a>
     </li>
   </ul>

@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { StockRequestService } from '../stock-request.service';
+import { SearchService } from '../search.service';
 import { StockRequest } from '../stockRequest';
+import { stringify } from '@angular/compiler/src/util';
+import { Observable } from 'rxjs';
+
+export interface searchParam {
+  partNumber: string;
+  quantity: number;
+  vor: boolean;
+}
+
 
 @Component({
   selector: 'app-main',
@@ -11,19 +20,23 @@ import { StockRequest } from '../stockRequest';
 })
 export class MainComponent implements OnInit {  
   inquiryForm: any;
-  searchResult: any[]=[];
+  results: StockRequest[];
 
-  constructor(private formBuilder: FormBuilder, private stockRequestService: StockRequestService) { 
+  data: searchParam = {} as searchParam;
+
+  constructor(private formBuilder: FormBuilder, private searchService: SearchService) { 
     this.inquiryForm = this.formBuilder.group({
       partNumber: ['', [Validators.required, Validators.maxLength(17)]],
       quantity: ['', [Validators.required, Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
-      vor: ['Y',]
+      vor: ['',]
 
     });  
   }
 
-  getResponse(): void {
-    this.stockRequestService.getResponse().subscribe(response => this.searchResult = response);
+  doSearch() {
+    this.searchService.search(this.data).subscribe( (data) => {
+      this.results = data;
+    })
    
   }
 
@@ -39,20 +52,8 @@ export class MainComponent implements OnInit {
     return this.inquiryForm.get('vor');
   }
 
-  onSubmit() {
-    console.log(this.inquiryForm.value)
-    if(this.inquiryForm.valid) {
-      this.stockRequestService.http.post('api/response', this.inquiryForm.value)
-      .subscribe((response)=>{
-        console.log('response', this.searchResult);
-      }
-
-      )
-    } 
-    }
-
   ngOnInit(): void {
-   this.getResponse();
+    this.doSearch();
   }
 
 

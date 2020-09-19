@@ -1,43 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { SearchService } from '../search.service';
-import { StockRequest } from '../stockRequest';
-import { stringify } from '@angular/compiler/src/util';
-import { Observable } from 'rxjs';
 
-export interface searchParam {
-  partNumber: string;
-  quantity: number;
-  vor: boolean;
-}
-
+import { StockPart } from '../stock-part';
+import { StockPartService } from '../stock-part.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {  
+export class MainComponent implements OnInit {
   inquiryForm: any;
-  results: StockRequest[];
+  stockPart: StockPart;
 
-  data: searchParam = {} as searchParam;
+  constructor(private formBuilder: FormBuilder, private stockPartService: StockPartService) { 
 
-  constructor(private formBuilder: FormBuilder, private searchService: SearchService) { 
     this.inquiryForm = this.formBuilder.group({
+      distributor: ['', [Validators.required, Validators.maxLength(4)]],
+      userId: ['', [Validators.required, Validators.maxLength(8)]],
       partNumber: ['', [Validators.required, Validators.maxLength(17)]],
       quantity: ['', [Validators.required, Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
-      vor: ['',]
+      vor: ['Y', [Validators.required]]
+    });
 
-    });  
   }
 
-  doSearch() {
-    this.searchService.search(this.data).subscribe( (data) => {
-      this.results = data;
-    })
-   
+  get distributor() {
+    return this.inquiryForm.get('distributor');
+  }
+
+  get userId() {
+    return this.inquiryForm.get('userId');
   }
 
   get partNumber() {
@@ -52,9 +45,24 @@ export class MainComponent implements OnInit {
     return this.inquiryForm.get('vor');
   }
 
-  ngOnInit(): void {
-    this.doSearch();
+  onSubmit() {
+ 
+    this.getStockPart();
+
   }
 
-
+  getStockPart(): void {
+    
+    this.stockPartService.getStockPart(
+      this.inquiryForm.userId, 
+      this.inquiryForm.distributor, 
+      this.inquiryForm.partNumber, 
+      this.inquiryForm.quantity, 
+      this.inquiryForm.vor)
+    .subscribe(stockPart => this.stockPart = stockPart);
+  }
+  
+  ngOnInit(): void {
+  }
+  
 }

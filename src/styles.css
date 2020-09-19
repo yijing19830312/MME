@@ -11,7 +11,7 @@ label {
   vertical-align: baseline;
   width: 125px;
   color: #2D2D2D;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 form, input {
@@ -34,37 +34,36 @@ form, input {
 
 app-header {
     color: black;
-    font-size: 14px;
     grid-area: header;
     text-align: center;
     background-color: white;
   }
   
-  app-nav { 
+  app-nav {
     grid-area: nav;
     margin-left: 0.6rem;
-    background-color: white;
+    background-color: #536d55;
   }
   
   app-privacy-policy,
   app-main {
     grid-area: content;
     background-color: white;
-    padding: 25px;
+    padding-left: 25px;
   }
   
   app-aside {
     grid-area: side;
     margin-right: 0.6rem;
-    background-color: #a9acad;
+    background-color: #2A92BF;
   }
   
   app-footer {
     grid-area: footer;
-    background-color: white;
-    color: black;
+    background-color:#766b97;
+    color: white;
     text-align: center;
-    padding: 12px 0;
+    padding: 10px 0;
   }
 
   ol {
@@ -72,11 +71,11 @@ app-header {
   }
 
   ol li {
-    color:black;
+    color: white;
   }
   
   ol li a {
-    color: black;
+    color: white;
     text-decoration: none;
     display: inline-block;
     margin-bottom: 15px;

@@ -1,13 +1,39 @@
 <main>
-<div style="float: left; width:50%;">
- 
-  <form [formGroup]="inquiryForm" novalidate>
-   
+<div>
+   <form [formGroup]="inquiryForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <p>
+      <label for="userId">User-id </label>
+      <input [(ngModel)]="inquiryForm.userId" type="text" id="userId" name="userId" formControlName="userId">
+    </p>
+    <div
+      *ngIf="!userId?.valid && (userId?.dirty ||userId?.touched)">
+      <div [hidden]="!userId.errors.required">
+        Part-number is required
+      </div>User-id
+      <div [hidden]="!userId.errors.maxlength">
+        Max length allowed is {{userId.errors.maxlength?.requiredLength}}
+      </div>
+    </div>
+
+    <p>
+      <label for="distributor">Distributor </label>
+      <input [(ngModel)]="inquiryForm.distributor" type="text" id="distributor" name="distributor" formControlName="distributor">
+    </p>
+    <div
+      *ngIf="!distributor?.valid && (distributor?.dirty ||distributor?.touched)">
+      <div [hidden]="!distributor.errors.required">
+        Part-number is required
+      </div>
+      <div [hidden]="!distributor.errors.maxlength">
+        Max length allowed is {{distributor.errors.maxlength?.requiredLength}}
+      </div>
+    </div>
+
     <p>
       <label for="partNumber">Part-number </label>
-      <input [(ngModel)]="data.partNumber" type="text" id="partNumber" name="partNumber" formControlName="partNumber">
+      <input [(ngModel)]="inquiryForm.partNumber" type="text" id="partNumber" name="partNumber" formControlName="partNumber">
     </p>
-   
     <div
       *ngIf="!partNumber?.valid && (partNumber?.dirty ||partNumber?.touched)">
       <div [hidden]="!partNumber.errors.required">
@@ -20,9 +46,8 @@
    
     <p>
       <label for="quantity">Quantity </label>
-      <input [(ngModel)]="data.quantity"  type="text" id="lastname" name="quantity" formControlName="quantity">
+      <input [(ngModel)]="inquiryForm.quantity" type="text" id="lastname" name="quantity" formControlName="quantity">
     </p>
-   
     <div *ngIf="!quantity.valid && (quantity.dirty ||quantity.touched)">
       <div [hidden]="!quantity.errors.pattern">
         Only numbers are allowed
@@ -37,44 +62,50 @@
 
     <p>
       <label for="vor">VOR </label>
-      <input [(ngModel)]="data.vor" type="radio" value="Y" name="vor" formControlName="vor" > Y
-      <input [(ngModel)]="data.vor" type="radio" value="N" name="vor" formControlName="vor" > N
+      <input [(ngModel)]="inquiryForm.vor" type="radio" value="Y" name="vor" formControlName="vor" > Y
+      <input [(ngModel)]="inquiryForm.vor" type="radio" value="N" name="vor" formControlName="vor" > N
     </p>
   
     <p>
-      <button type="button" 
-              (click)="doSearch()" 
-              [disabled]="!inquiryForm.valid">Search
-      </button>
-    </p>
-    
+      <button type="submit" [disabled]="!inquiryForm.valid">Submit</button>
+    </p>   
   </form>
-   
-  </div>
+</div>
 
-  <ul class="search-result">
-    <li *ngFor="let item of results" >
-      <a>
-        {{item.partName}}
-      </a>
-    </li>
-  </ul>
-   
-  <div style="float: right; width:50%;">
-   
-    <h3>inquiryForm Status</h3>
-    <b>valid : </b>{{inquiryForm.valid}}
-    <b>invalid : </b>{{inquiryForm.invalid}}
-    <b>touched : </b>{{inquiryForm.touched}}
-    <b>untouched : </b>{{inquiryForm.untouched}}
-    <b>pristine : </b>{{inquiryForm.pristine}}
-    <b>dirty : </b>{{inquiryForm.dirty}}
-    <b>disabled : </b>{{inquiryForm.disabled}}
-    <b>enabled : </b>{{inquiryForm.enabled}}
-   
-    <h3>inquiryForm Value</h3>
-    {{inquiryForm.value |json}}
-   
+<div class='box'>
+  <div class='row'>
+    <div class='column'>Source</div>
+    <div class='column'>{{stockPart['SOURCE_CD']}}</div>
   </div>
+  <div class='row'>
+    <div class='column'>Supplier code</div>
+    <div class='column'>{{stockPart['SUPPLIER_CD']}}</div>
+  </div>
+  <div class='row'>
+    <div class='column'>Ref.no</div>
+    <div class='column'>{{stockPart['DOCUMENT']}}</div>
+  </div>
+  <div class='row'>
+    <div class='column'>New PNO</div>
+    <div class='column'>{{stockPart['NEW_PNO']}}</div>
+  </div>
+  <div class='row'>
+    <div class='column'>PNC</div>
+    <div class='column'>{{stockPart['PART_NAME_CD']}}</div>
+  </div>
+  <div class='row'>
+    <div class='column'>Weight</div>
+    <div class='column'>{{stockPart['NET_WEIGHT']}}</div>
+  </div>
+  <div class='row'>
+    <div class='column'>Message1</div>
+    <div class='column'>{{stockPart['LNK_TEXT20']}}</div>
+  </div>
+  <div class='row'>
+    <div class='column'>Message2</div>
+    <div class='column'>{{stockPart['LNK_TEXT12']}}</div>
+  </div>     
+</div>
+   
+
 </main>
-

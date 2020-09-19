@@ -13,12 +13,16 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 export class StockPartService {
 
   private stockPartsUrl = 'api/stockParts';  // URL to web api
+  loading: boolean;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.loading = false;
+  }
+
 
     /** GET inquiryStockPart from the server */
     getStockPart(

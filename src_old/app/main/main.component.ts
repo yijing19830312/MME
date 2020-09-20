@@ -17,8 +17,8 @@ export class MainComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private stockPartService: StockPartService) { 
 
     this.inquiryForm = this.formBuilder.group({
-      userId: ['', [Validators.required, Validators.maxLength(8)]],
       distributor: ['', [Validators.required, Validators.maxLength(4)]],
+      userId: ['', [Validators.required, Validators.maxLength(8)]],
       partNumber: ['', [Validators.required, Validators.maxLength(17)]],
       quantity: ['', [Validators.required, Validators.maxLength(5), Validators.pattern("^[0-9]*$")]],
       vor: ['Y', [Validators.required]]
@@ -26,12 +26,12 @@ export class MainComponent implements OnInit {
 
   }
 
-  get userId() {
-    return this.inquiryForm.get('userId');
-  }
-
   get distributor() {
     return this.inquiryForm.get('distributor');
+  }
+
+  get userId() {
+    return this.inquiryForm.get('userId');
   }
 
   get partNumber() {
@@ -49,11 +49,11 @@ export class MainComponent implements OnInit {
   onSubmit() {
  
     this.getStockPart();
-    
+
   }
 
   getStockPart(): void {
-    
+    this. loading = true;
     this.stockPartService.getStockPart(
       this.inquiryForm.userId, 
       this.inquiryForm.distributor, 

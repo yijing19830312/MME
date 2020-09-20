@@ -42,13 +42,13 @@ app-header {
   app-nav {
     grid-area: nav;
     margin-left: 0.6rem;
-    background-color: #2A92BF;
+    background-color: #536d55;
   }
   
   app-privacy-policy,
   app-main {
     grid-area: content;
-    background-color: #F4CE46;
+    background-color: white;
     padding-left: 25px;
   }
   
@@ -60,10 +60,10 @@ app-header {
   
   app-footer {
     grid-area: footer;
-    background-color:#2BB961;
+    background-color:#766b97;
     color: white;
     text-align: center;
-    padding: 25px 0;
+    padding: 10px 0;
   }
 
   ol {

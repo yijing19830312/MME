@@ -9,28 +9,64 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const stockParts = [
       { 
-        ['id']: 11,
-        ['PART_NAME']: 'Bolt',
-        ['NEW_PNO']: 'newPNO', 
-        ['PART_NAME_CD']: 'ZX45', 
-        ['SOURCE_CD']: '37A', 
-        ['SUPPLIER_CD']: '4', 
-        ['NET_WEIGHT']: 15.0, 
-        ['DOCUMENT']: '22', 
-        ['LNK_TEXT20']: 'Hi Yi Jing', 
-        ['LNK_TEXT12']: 'This is in memory data'         
+        id: 11,
+        AFM0010 : {
+          AF10_INTERFACE : {
+            AF10_RESPONSE : {
+              LNK_MSG_CODE: '000',
+              LNK_MSG_DESCR: 'SUCCESS',
+              PART_NAME: 'CLIP,FUEL RETURN LINE',
+              NEW_PNO: '',
+              PART_NAME_CD: '05473',
+              SOURCE_CD: 'MMC',
+              SUPPLIER_CD: 'MMC',
+              NET_WEIGHT: 2,
+              DOCUMENT: 'SPL NE NAS',
+              LNK_TEXT20: 'AVAILABLE',
+              LNK_TEXT12: ''    
+            }
+          }
+        }
+      },       
+      { 
+        id: 12,
+        AFM0010 : {
+          AF10_INTERFACE : {
+            AF10_RESPONSE : {
+              LNK_MSG_CODE: '000',
+              LNK_MSG_DESCR: 'SUCCESS',
+              PART_NAME: 'COIL SPRING',
+              NEW_PNO: '',
+              PART_NAME_CD: '7821',
+              SOURCE_CD: 'MMC',
+              SUPPLIER_CD: 'MMC',
+              NET_WEIGHT: 400,
+              DOCUMENT: 'SPL NE NAS',
+              LNK_TEXT20: 'NOT AVAILABLE',
+              LNK_TEXT12: ''    
+            }
+          }
+        }
       },
       { 
-        ['id']: 12,
-        ['PART_NAME']: 'Nut',
-        ['NEW_PNO']: 'newPNO', 
-        ['PART_NAME_CD']: 'ZX45', 
-        ['SOURCE_CD']: '37A', 
-        ['SUPPLIER_CD']: '4', 
-        ['NET_WEIGHT']: 6.0, 
-        ['DOCUMENT']: '22', 
-        ['LNK_TEXT20']: 'prm 175', 
-        ['LNK_TEXT12']: 'superseded'         
+        id: 13,
+        AFM0010 : {
+          AF10_INTERFACE : {
+            AF10_RESPONSE : {
+              LNK_MSG_CODE: '050',
+              LNK_MSG_DESCR: 'DB2 call error',
+              PART_NAME: '',
+              NEW_PNO: '',
+              PART_NAME_CD: '',
+              SOURCE_CD: '',
+              SUPPLIER_CD: '',
+              NET_WEIGHT: 0,
+              DOCUMENT: '',
+              LNK_TEXT20: '',
+              LNK_TEXT12: ''    
+            }
+          }
+        }        
       }
     ];
     return {stockParts};

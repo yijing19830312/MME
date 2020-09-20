@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { StockPart } from './stock-part';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +19,27 @@ export class StockPartService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { 
     this.loading = false;
-   }
+  }
+
 
     /** GET inquiryStockPart from the server */
-    getStockPart(userId: string, distributor: string, partnumber: string,
-      quantity: number, vor: string): Observable<StockPart> {
+    getStockPart(
+      userId: string, 
+      distributor: string, 
+      partnumber: string, 
+      quantity: number, 
+      vor: string): Observable<StockPart> {
 
-      const url = `${this.stockPartsUrl}/?id=${partnumber}`;
-
-      this.constructJSON(userId, distributor,partnumber,quantity,vor);
+      let url = "";
+      let jsonMessage = "";
+      if (true) { //Toggle from configuration, but true for now.
+        url = `${this.stockPartsUrl}/?id=${partnumber}`;
+      } else {
+        jsonMessage = this.constructJSON(userId, distributor, partnumber, quantity,vor);
+        url = `${this.stockPartsUrl}/?json=${jsonMessage}`;
+      }
 
       return this.http.get<StockPart>(url).
         pipe(
@@ -51,7 +62,7 @@ export class StockPartService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead for now
+      console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -70,22 +81,9 @@ export class StockPartService {
       quantity: number, 
       vor: string) {
 
-      var rootObject = {
-        AFM0010 : {
-          AF10_INTERFACE : {
-           AF10_REQUEST : {
-              LNK_USER_ID: `${userId}`,
-              LNK_DISTR_CODE: `${distributor}`,
-              PART_NUMBER :  `${partnumber}`,
-              QTY: `${quantity}`,
-              VOR_Y_N: `${vor}`
-            }
-          }
-        }
-      };
+      let jsonMessage = "";
 
-      console.log(JSON.stringify(rootObject));
       // From fields construct JSON message
-      return "";
+      return jsonMessage;
   }
 }

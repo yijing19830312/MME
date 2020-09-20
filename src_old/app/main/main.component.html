@@ -1,36 +1,34 @@
 <main>
-  <div>
-    <form [formGroup]="inquiryForm" (ngSubmit)="onSubmit()" novalidate>
+<div>
+   <form [formGroup]="inquiryForm" (ngSubmit)="onSubmit()" novalidate>
 
-      <p>
-        <label for="userId">User-id </label>
-        <input [(ngModel)]="inquiryForm.userId" type="text" id="userId" name="userId" formControlName="userId">
-      </p>
-      <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched) && userId.errors.required">
-        <div [hidden]="!userId.errors.required">
-          User-id is required
-        </div>
+    <p>
+      <label for="userId">User-id </label>
+      <input [(ngModel)]="inquiryForm.userId" type="text" id="userId" name="userId" formControlName="userId">
+    </p>
+    <div
+      *ngIf="!userId?.valid && (userId?.dirty ||userId?.touched)">
+      <div [hidden]="!userId.errors.required">
+        Part-number is required
+      </div>User-id
+      <div [hidden]="!userId.errors.maxlength">
+        Max length allowed is {{userId.errors.maxlength?.requiredLength}}
       </div>
-      <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched) && userId.errors.maxlength">
-        <div [hidden]="!userId.errors.maxlength">
-          Max length allowed is {{userId.errors.maxlength?.requiredLength}}
-        </div>
-      </div>
+    </div>
 
-      <p>
-        <label for="distributor">Distributor </label>
-        <input [(ngModel)]="inquiryForm.distributor" type="text" id="distributor" name="distributor" formControlName="distributor">
-      </p>
-      <div *ngIf="!distributor?.valid && (distributor?.dirty || distributor?.touched) && distributor.errors.required">
-        <div [hidden]="!distributor.errors.required">
-          Distributor is required
-        </div>
+    <p>
+      <label for="distributor">Distributor </label>
+      <input [(ngModel)]="inquiryForm.distributor" type="text" id="distributor" name="distributor" formControlName="distributor">
+    </p>
+    <div
+      *ngIf="!distributor?.valid && (distributor?.dirty ||distributor?.touched)">
+      <div [hidden]="!distributor.errors.required">
+        Part-number is required
       </div>
-      <div *ngIf="!distributor?.valid && (distributor?.dirty || distributor?.touched) && distributor.errors.maxlength">
-        <div [hidden]="!distributor.errors.maxlength">
-          Max length allowed is {{distributor.errors.maxlength?.requiredLength}}
-        </div>
+      <div [hidden]="!distributor.errors.maxlength">
+        Max length allowed is {{distributor.errors.maxlength?.requiredLength}}
       </div>
+    </div>
 
     <p>
       <label for="partNumber">Part-number </label>
@@ -72,41 +70,42 @@
       <button type="submit" [disabled]="!inquiryForm.valid">Submit</button>
     </p>   
   </form>
+</div>
+<div>
   <p *ngIf="loading">Loading...</p>
 </div>
-
 <div class='box'>
   <div class='row'>
     <div class='column'>Source</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.SOURCE_CD}}</div>
+    <div class='column'>{{stockPart['SOURCE_CD']}}</div>
   </div>
   <div class='row'>
     <div class='column'>Supplier code</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.SUPPLIER_CD}}</div>
+    <div class='column'>{{stockPart['SUPPLIER_CD']}}</div>
   </div>
   <div class='row'>
     <div class='column'>Ref.no</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.DOCUMENT}}</div>
+    <div class='column'>{{stockPart['DOCUMENT']}}</div>
   </div>
   <div class='row'>
     <div class='column'>New PNO</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.NEW_PNO}}</div>
+    <div class='column'>{{stockPart['NEW_PNO']}}</div>
   </div>
   <div class='row'>
     <div class='column'>PNC</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.PART_NAME_CD}}</div>
+    <div class='column'>{{stockPart['PART_NAME_CD']}}</div>
   </div>
   <div class='row'>
     <div class='column'>Weight</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.NET_WEIGHT}}</div>
+    <div class='column'>{{stockPart['NET_WEIGHT']}}</div>
   </div>
   <div class='row'>
     <div class='column'>Message1</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.LNK_TEXT20}}</div>
+    <div class='column'>{{stockPart['LNK_TEXT20']}}</div>
   </div>
   <div class='row'>
     <div class='column'>Message2</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.LNK_TEXT12}}</div>
+    <div class='column'>{{stockPart['LNK_TEXT12']}}</div>
   </div>     
 </div>
    

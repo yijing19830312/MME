@@ -1,0 +1,12 @@
+.box {
+    display: flex;
+    align-items: center;
+ }
+
+ img.header-logo {
+    padding: 10px;
+ }
+
+ h2 {
+    font-size: 16px;
+ }

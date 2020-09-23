@@ -60,7 +60,7 @@ export class InMemoryDataService implements InMemoryDbService {
               PART_NAME_CD: '',
               SOURCE_CD: '',
               SUPPLIER_CD: '',
-              NET_WEIGHT: 0,
+              NET_WEIGHT: '',
               DOCUMENT: '',
               LNK_TEXT20: '',
               LNK_TEXT12: ''    

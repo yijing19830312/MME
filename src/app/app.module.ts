@@ -11,7 +11,6 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -22,7 +21,6 @@ import { AppRoutingModule } from './app-routing.module';
     NavComponent,
     MainComponent,
     FooterComponent,
-    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,

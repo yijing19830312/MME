@@ -1,114 +1,127 @@
 <main>
   <div>
     <form [formGroup]="inquiryForm" (ngSubmit)="onSubmit()" novalidate>
-
-      <p>
-        <label for="userId">User-id </label>
-        <input [(ngModel)]="inquiryForm.userId" type="text" id="userId" name="userId" formControlName="userId">
+      <div class="row-box">
+        <div class="row-margin-1em">
+          <label for="userId">User-id </label>
+          <div class="row-input-box">
+            <input [(ngModel)]="inquiryForm.userId" type="text" id="userId" name="userId" formControlName="userId">
+            <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched) && userId.errors.required">
+              <div [hidden]="!userId.errors.required" class="required">
+                User-id is required
+              </div>
+            </div>
+            <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched) && userId.errors.maxlength">
+              <div [hidden]="!userId.errors.maxlength" class="required">
+                Max length allowed is {{userId.errors.maxlength?.requiredLength}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row-margin-1em">
+          <label for="distributor">Distributor </label>
+          <div class="row-input-box">
+            <input [(ngModel)]="inquiryForm.distributor" type="text" id="distributor" name="distributor" formControlName="distributor">
+            <div *ngIf="!distributor?.valid && (distributor?.dirty || distributor?.touched) && distributor.errors.required">
+              <div [hidden]="!distributor.errors.required" class="required">
+                Distributor is required
+              </div>
+            </div>
+            <div *ngIf="!distributor?.valid && (distributor?.dirty || distributor?.touched) && distributor.errors.maxlength">
+              <div [hidden]="!distributor.errors.maxlength" class="required">
+                Max length allowed is {{distributor.errors.maxlength?.requiredLength}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-box">
+        <div class="row-margin-1em">
+            <label for="partNumber">Part-number </label>
+            <div class="row-input-box"><input [(ngModel)]="inquiryForm.partNumber" type="text" id="partNumber" name="partNumber" formControlName="partNumber">
+              <div
+                *ngIf="!partNumber?.valid && (partNumber?.dirty ||partNumber?.touched)">
+                <div [hidden]="!partNumber.errors.required" class="required">
+                  Part-number is required
+                </div>
+                <div [hidden]="!partNumber.errors.maxlength" class="required">
+                  Max length allowed is {{partNumber.errors.maxlength?.requiredLength}}
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">   
+          <div class='row-margin-1em'>
+            {{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.PART_NAME}}
+          </div>
+        </div>
+      </div>
+      <div class="row-box">
+        <div class="row-margin-1em">
+            <label for="quantity">Quantity </label>
+            <div class="row-input-box">
+              <input [(ngModel)]="inquiryForm.quantity" type="text" id="lastname" name="quantity" formControlName="quantity">
+              <div *ngIf="!quantity.valid && (quantity.dirty ||quantity.touched)">
+                <div [hidden]="!quantity.errors.pattern" class="required">
+                  Only numbers are allowed
+                </div>
+                <div [hidden]="!quantity.errors.maxlength" class="required">
+                  Max length allowed is {{quantity.errors.maxlength?.requiredLength}}
+                </div>
+                <div [hidden]="!quantity.errors.required" class="required">
+                  Quantity is required
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row-margin-1em">
+          <label for="vor">VOR </label>
+          <input [(ngModel)]="inquiryForm.vor" type="radio" value="Y" name="vor" formControlName="vor" > Y
+          <input [(ngModel)]="inquiryForm.vor" type="radio" value="N" name="vor" formControlName="vor" > N
+        </div>
+      </div>
+      <p> 
+        <button type="submit" [disabled]="!inquiryForm.valid">Submit</button>
       </p>
-      <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched) && userId.errors.required">
-        <div [hidden]="!userId.errors.required">
-          User-id is required
-        </div>
-      </div>
-      <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched) && userId.errors.maxlength">
-        <div [hidden]="!userId.errors.maxlength">
-          Max length allowed is {{userId.errors.maxlength?.requiredLength}}
-        </div>
-      </div>
-
-      <p>
-        <label for="distributor">Distributor </label>
-        <input [(ngModel)]="inquiryForm.distributor" type="text" id="distributor" name="distributor" formControlName="distributor">
-      </p>
-      <div *ngIf="!distributor?.valid && (distributor?.dirty || distributor?.touched) && distributor.errors.required">
-        <div [hidden]="!distributor.errors.required">
-          Distributor is required
-        </div>
-      </div>
-      <div *ngIf="!distributor?.valid && (distributor?.dirty || distributor?.touched) && distributor.errors.maxlength">
-        <div [hidden]="!distributor.errors.maxlength">
-          Max length allowed is {{distributor.errors.maxlength?.requiredLength}}
-        </div>
-      </div>
-
-    <p>
-      <label for="partNumber">Part-number </label>
-      <input [(ngModel)]="inquiryForm.partNumber" type="text" id="partNumber" name="partNumber" formControlName="partNumber">
-    </p>
-    <div
-      *ngIf="!partNumber?.valid && (partNumber?.dirty ||partNumber?.touched)">
-      <div [hidden]="!partNumber.errors.required">
-        Part-number is required
-      </div>
-      <div [hidden]="!partNumber.errors.maxlength">
-        Max length allowed is {{partNumber.errors.maxlength?.requiredLength}}
-      </div>
-    </div>
-   
-    <p>
-      <label for="quantity">Quantity </label>
-      <input [(ngModel)]="inquiryForm.quantity" type="text" id="lastname" name="quantity" formControlName="quantity">
-    </p>
-    <div *ngIf="!quantity.valid && (quantity.dirty ||quantity.touched)">
-      <div [hidden]="!quantity.errors.pattern">
-        Only numbers are allowed
-      </div>
-      <div [hidden]="!quantity.errors.maxlength">
-        Max length allowed is {{quantity.errors.maxlength?.requiredLength}} 
-      </div>
-      <div [hidden]="!quantity.errors.required">
-        Quantity is required
-      </div>
-    </div>
-
-    <p>
-      <label for="vor">VOR </label>
-      <input [(ngModel)]="inquiryForm.vor" type="radio" value="Y" name="vor" formControlName="vor" > Y
-      <input [(ngModel)]="inquiryForm.vor" type="radio" value="N" name="vor" formControlName="vor" > N
-    </p>
-  
-    <p>
-      <button type="submit" [disabled]="!inquiryForm.valid">Submit</button>
-    </p>   
   </form>
-  <p *ngIf="loading">Loading...</p>
 </div>
-
 <div class='box'>
+  <p class='row' *ngIf="loading">Loading...</p>
   <div class='row'>
     <div class='column'>Source</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.SOURCE_CD}}</div>
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.SOURCE_CD}}</div>
   </div>
   <div class='row'>
     <div class='column'>Supplier code</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.SUPPLIER_CD}}</div>
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.SUPPLIER_CD}}</div>
   </div>
   <div class='row'>
     <div class='column'>Ref.no</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.DOCUMENT}}</div>
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.DOCUMENT}}</div>
   </div>
   <div class='row'>
     <div class='column'>New PNO</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.NEW_PNO}}</div>
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.NEW_PNO}}</div>
   </div>
   <div class='row'>
     <div class='column'>PNC</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.PART_NAME_CD}}</div>
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.PART_NAME_CD}}</div>
   </div>
   <div class='row'>
     <div class='column'>Weight</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.NET_WEIGHT}}</div>
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.NET_WEIGHT}}</div>
   </div>
   <div class='row'>
     <div class='column'>Message1</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.LNK_TEXT20}}</div>
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.LNK_TEXT20}}</div>
   </div>
   <div class='row'>
     <div class='column'>Message2</div>
-    <div class='column'>{{stockPart.AFM0010.AF10_INTERFACE.AF10_RESPONSE.LNK_TEXT12}}</div>
-  </div>     
+    <div class='column'>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.LNK_TEXT12}}</div>
+  </div>
 </div>
-   
-
+<div class='error' 
+*ngIf="stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.LNK_MSG_CODE!==000">
+  <div>{{stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.LNK_MSG_CODE + " " +stockPart?.AFM0010?.AF10_INTERFACE?.AF10_RESPONSE?.LNK_MSG_DESCR}}</div>
+</div>
 </main>

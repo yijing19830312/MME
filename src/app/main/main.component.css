@@ -2,15 +2,41 @@
     width: 50%;
     font-size: 13px;
 }
-  
 .row {
     display: flex;
     vertical-align: baseline;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
-
 .column {
     display: flex;
     vertical-align: baseline;
     width: 125px;
+}
+.required{
+    color:#c71300;
+}
+.row-margin-1em{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.row-margin-1em label{
+    float: left;
+    align-items:center;
+}
+.row-input-box{
+    overflow: hidden;
+}
+.row-box{
+    display: grid;
+    grid-template-columns: 400px 400px;
+    margin-bottom: 0px;
+}
+
+.error{
+    display: grid;
+    width: 100%;
+    text-align: center;
+    color: red;
 }

@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
   inquiryForm: any;
   stockPart: StockPart;
   loading: boolean = false;
+  
 
   constructor(private formBuilder: FormBuilder, private stockPartService: StockPartService) { 
 
@@ -47,13 +48,13 @@ export class MainComponent implements OnInit {
   }
 
   onSubmit() {
- 
-    this.getStockPart();
+    this.stockPart = {} as StockPart;
+     this.getStockPart();
     
   }
 
   getStockPart(): void {
-    
+    this.loading = true;
     this.stockPartService.getStockPart(
       this.inquiryForm.userId, 
       this.inquiryForm.distributor, 
@@ -62,7 +63,10 @@ export class MainComponent implements OnInit {
       this.inquiryForm.vor)
     .subscribe(stockPart => {
       this.loading = false;
-      this.stockPart = stockPart});
+      if (stockPart) {
+        this.stockPart = stockPart;
+      }
+      });
   }
   
   ngOnInit(): void {
